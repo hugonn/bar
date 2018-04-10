@@ -60,7 +60,7 @@ public class JanelaGerencia extends JFrame {
 					
 				}
 			}
-		});
+		}); 
 		btnNewButton.setBounds(69, 77, 287, 23);
 		contentPane.add(btnNewButton);
 		
