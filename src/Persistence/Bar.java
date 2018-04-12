@@ -48,4 +48,13 @@ public class Bar {
 		}
 		return null;
 	}
+	
+	public int retornaQtdClienteSocios() {
+		int qtd = 0;
+		for(Pessoa p: pessoasBar) {
+			if(p.getNumSocio()!=0) 
+				qtd++;
+		}
+		return qtd;
+	}
 }

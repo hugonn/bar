@@ -4,15 +4,23 @@ public class Pessoa {
 	private String nome,cpf;
 	private int idade;
 	private char genero;
+	private int numSocio;
 	
 	public Pessoa(){}
 
 	public Pessoa(String nome, String cpf, int idade, char genero) {
+		this(nome,cpf,idade,genero,0);
+	}
+	
+	
+
+	public Pessoa(String nome, String cpf, int idade, char genero, int numSocio) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.genero = genero;
+		this.numSocio = numSocio;
 	}
 
 	public String getNome() {
@@ -45,6 +53,14 @@ public class Pessoa {
 
 	public void setGenero(char genero) {
 		this.genero = genero;
+	}
+	
+	public int getNumSocio() {
+		return numSocio;
+	}
+
+	public void setNumSocio(int numSocio) {
+		this.numSocio = numSocio;
 	}
 	
 	

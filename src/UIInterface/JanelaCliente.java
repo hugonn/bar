@@ -11,13 +11,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
+import java.awt.Choice;
+import java.awt.Label;
 
 public class JanelaCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField TFNome;
 	private JTextField TFIdade;
-	private JanelaGerencia janelaPai;
+	private JTextField numSocioField;
 
 	/**
 	 * Launch the application.
@@ -38,15 +41,14 @@ public class JanelaCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaCliente(JanelaGerencia janelaPai) {
+	public JanelaCliente(JanelaPrincipal janelaPai) {
 		setTitle("\u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 411, 219);
+		setBounds(100, 100, 411, 254);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.janelaPai = janelaPai;
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(10, 23, 46, 14);
@@ -67,7 +69,7 @@ public class JanelaCliente extends JFrame {
 		TFIdade.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(284, 146, 89, 23);
+		btnCadastrar.setBounds(285, 181, 89, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -77,8 +79,45 @@ public class JanelaCliente extends JFrame {
 				janelaPai.setVisible(true);
 			}
 		});
-		btnVoltar.setBounds(10, 146, 89, 23);
+		btnVoltar.setBounds(10, 181, 89, 23);
 		contentPane.add(btnVoltar);
+		
+		JLabel lblNmeroScio = new JLabel("N\u00FAmero S\u00F3cio:");
+		lblNmeroScio.setBounds(84, 127, 97, 14);
+		contentPane.add(lblNmeroScio);
+		lblNmeroScio.setVisible(false);
+		
+		JCheckBox checkSocio = new JCheckBox("S\u00F3cio?");
+		checkSocio.setBounds(6, 123, 97, 23);
+		contentPane.add(checkSocio);
+		
+		if(checkSocio.isSelected())System.out.println("test");
+		checkSocio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(checkSocio.isSelected()) {
+					lblNmeroScio.setVisible(true);
+					numSocioField.setVisible(true);
+				}else {
+					lblNmeroScio.setVisible(false);
+					numSocioField.setVisible(false);
+				}
+			}
+		});
+		
+		numSocioField = new JTextField();
+		numSocioField.setBounds(175, 124, 118, 20);
+		contentPane.add(numSocioField);
+		numSocioField.setColumns(10);
+		numSocioField.setVisible(false);
+		
+		Choice gen = new Choice();
+		gen.setBounds(167, 90, 58, 20);
+		gen.add("M");
+		gen.add("F");
+		contentPane.add(gen);
+		
+		Label label = new Label("G\u00EAnero:");
+		label.setBounds(163, 67, 62, 22);
+		contentPane.add(label);
 	}
-	
 }
