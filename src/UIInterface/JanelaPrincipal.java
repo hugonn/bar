@@ -52,8 +52,8 @@ public class JanelaPrincipal extends JFrame {
 		gb = new GerenciadorBar();
 		
 		
-		JButton btnNewButton = new JButton("Cadastro Cliente");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnNovoCliente = new JButton("Cadastro Cliente");
+		btnNovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(janelaFilho == null) {
 					janelaFilho = new JanelaCliente(jg);
@@ -67,11 +67,11 @@ public class JanelaPrincipal extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(71, 37, 251, 23);
-		contentPane.add(btnNewButton);
+		btnNovoCliente.setBounds(71, 37, 251, 23);
+		contentPane.add(btnNovoCliente);
 		
-		JButton btnNewButton_1 = new JButton("\u00C1rea do Gerente");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnGerente = new JButton("\u00C1rea do Gerente");
+		btnGerente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(janelaFilhoGerente == null) {
 					janelaFilhoGerente = new JanelaGerente(jg);
@@ -85,12 +85,14 @@ public class JanelaPrincipal extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(71, 92, 251, 23);
-		contentPane.add(btnNewButton_1);
+		btnGerente.setBounds(71, 92, 251, 23);
+		contentPane.add(btnGerente);
 	}
-	
-	public void setPessoa(String Nome, int idade) {
-		
+	public void setPessoa(String nome, String cpf, int idade,String genero) {
+		System.out.println(nome + cpf+idade+genero);
+	}
+	public void setPessoaSocio(String nome, String cpf, int idade,String genero, int numSocio) {
+		System.out.println(nome + cpf+idade+genero+numSocio);
 	}
 
 }

@@ -20,7 +20,8 @@ public class JanelaCliente extends JFrame {
 	private JPanel contentPane;
 	private JTextField TFNome;
 	private JTextField TFIdade;
-	private JTextField numSocioField;
+	private JTextField TFSocio;
+	private JTextField TFCpf;
 
 	/**
 	 * Launch the application.
@@ -41,7 +42,7 @@ public class JanelaCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaCliente(JanelaPrincipal janelaPai) {
+	public JanelaCliente(JanelaPrincipal jP) {
 		setTitle("\u00C1rea do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 411, 254);
@@ -68,27 +69,25 @@ public class JanelaCliente extends JFrame {
 		contentPane.add(TFIdade);
 		TFIdade.setColumns(10);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(285, 181, 89, 23);
-		contentPane.add(btnCadastrar);
+		
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				janelaPai.setVisible(true);
+				jP.setVisible(true);
 			}
 		});
 		btnVoltar.setBounds(10, 181, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblNmeroScio = new JLabel("N\u00FAmero S\u00F3cio:");
-		lblNmeroScio.setBounds(84, 127, 97, 14);
+		lblNmeroScio.setBounds(98, 127, 97, 14);
 		contentPane.add(lblNmeroScio);
 		lblNmeroScio.setVisible(false);
 		
 		JCheckBox checkSocio = new JCheckBox("S\u00F3cio?");
-		checkSocio.setBounds(6, 123, 97, 23);
+		checkSocio.setBounds(6, 123, 67, 23);
 		contentPane.add(checkSocio);
 		
 		if(checkSocio.isSelected())System.out.println("test");
@@ -96,28 +95,57 @@ public class JanelaCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(checkSocio.isSelected()) {
 					lblNmeroScio.setVisible(true);
-					numSocioField.setVisible(true);
+					TFSocio.setVisible(true);
 				}else {
 					lblNmeroScio.setVisible(false);
-					numSocioField.setVisible(false);
+					TFSocio.setVisible(false);
 				}
 			}
 		});
 		
-		numSocioField = new JTextField();
-		numSocioField.setBounds(175, 124, 118, 20);
-		contentPane.add(numSocioField);
-		numSocioField.setColumns(10);
-		numSocioField.setVisible(false);
+		TFSocio = new JTextField();
+		TFSocio.setBounds(199, 124, 118, 20);
+		contentPane.add(TFSocio);
+		TFSocio.setColumns(10);
+		TFSocio.setVisible(false);
 		
 		Choice gen = new Choice();
-		gen.setBounds(167, 90, 58, 20);
+		gen.setBounds(173, 90, 58, 20);
 		gen.add("M");
 		gen.add("F");
 		contentPane.add(gen);
 		
 		Label label = new Label("G\u00EAnero:");
-		label.setBounds(163, 67, 62, 22);
+		label.setBounds(169, 67, 62, 22);
 		contentPane.add(label);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(TFNome.getText()!=null && TFIdade.getText()!=null) {
+					
+					if(!checkSocio.isSelected()) {
+						jP.setPessoa(TFNome.getText(), TFCpf.getText(), Integer.parseInt(TFIdade.getText()), gen.getSelectedItem());
+						
+					}else {
+						if(TFSocio.getText() != null) {
+							jP.setPessoaSocio(TFNome.getText(), TFCpf.getText(), Integer.parseInt(TFIdade.getText()), gen.getSelectedItem(), Integer.parseInt(TFSocio.getText()));
+						}
+					}
+				}
+			}
+		});
+		btnCadastrar.setBounds(285, 181, 89, 23);
+		contentPane.add(btnCadastrar);
+		
+		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setBounds(224, 23, 46, 14);
+		contentPane.add(lblCpf);
+		
+		TFCpf = new JTextField();
+		TFCpf.setBounds(224, 41, 132, 20);
+		contentPane.add(TFCpf);
+		TFCpf.setColumns(10);
 	}
 }
