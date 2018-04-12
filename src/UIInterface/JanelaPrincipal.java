@@ -79,7 +79,6 @@ public class JanelaPrincipal extends JFrame {
 					janelaFilhoGerente.setVisible(true);
 				}else{
 					dispose();
-					System.out.println("teste Criação tela");
 					janelaFilhoGerente.setVisible(true);
 					
 				}
@@ -89,10 +88,34 @@ public class JanelaPrincipal extends JFrame {
 		contentPane.add(btnGerente);
 	}
 	public void setPessoa(String nome, String cpf, int idade,String genero) {
-		System.out.println(nome + cpf+idade+genero);
+		gb.criaPessoa(nome,cpf,idade,genero.charAt(0),0);
 	}
 	public void setPessoaSocio(String nome, String cpf, int idade,String genero, int numSocio) {
-		System.out.println(nome + cpf+idade+genero+numSocio);
+		gb.criaPessoa(nome,cpf,idade,genero.charAt(0),numSocio);
 	}
+	
+	public int getQtdClientesBar() {
+		return gb.getQtdClientesBar();
+	}
+	
+	public int getSociosBar() {
+		return gb.getSocios();
+	}
+	public int getNaoSocios() {
+		return gb.getNaoSocios();
+	}
+	
+	public int getHomens() {
+		return gb.getHomens();
+	}
+	
+	public int getMulheres() {
+		return gb.getMulheres();
+	}
+	
+	public String getClientesBar() {
+		return gb.getClientesBar();
+	}
+	
 
 }

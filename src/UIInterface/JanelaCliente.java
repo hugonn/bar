@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -71,15 +72,8 @@ public class JanelaCliente extends JFrame {
 		
 		
 		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				jP.setVisible(true);
-			}
-		});
-		btnVoltar.setBounds(10, 181, 89, 23);
-		contentPane.add(btnVoltar);
+		
+		
 		
 		JLabel lblNmeroScio = new JLabel("N\u00FAmero S\u00F3cio:");
 		lblNmeroScio.setBounds(98, 127, 97, 14);
@@ -91,6 +85,7 @@ public class JanelaCliente extends JFrame {
 		contentPane.add(checkSocio);
 		
 		if(checkSocio.isSelected())System.out.println("test");
+		
 		checkSocio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(checkSocio.isSelected()) {
@@ -123,7 +118,7 @@ public class JanelaCliente extends JFrame {
 		
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(TFNome.getText()!=null && TFIdade.getText()!=null) {
+				if(TFNome.getText()!=null && TFIdade.getText()!=null && TFCpf.getText() != null) {
 					
 					if(!checkSocio.isSelected()) {
 						jP.setPessoa(TFNome.getText(), TFCpf.getText(), Integer.parseInt(TFIdade.getText()), gen.getSelectedItem());
@@ -134,6 +129,13 @@ public class JanelaCliente extends JFrame {
 						}
 					}
 				}
+				TFNome.setText("");
+				TFCpf.setText("");
+				TFIdade.setText("");
+				checkSocio.setSelected(false);
+				
+				dispose();
+				jP.setVisible(true);
 			}
 		});
 		btnCadastrar.setBounds(285, 181, 89, 23);
@@ -147,5 +149,20 @@ public class JanelaCliente extends JFrame {
 		TFCpf.setBounds(224, 41, 132, 20);
 		contentPane.add(TFCpf);
 		TFCpf.setColumns(10);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TFNome.setText("");
+				TFCpf.setText("");
+				TFIdade.setText("");
+				checkSocio.setSelected(false);
+				dispose();
+				jP.setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(10, 181, 89, 23);
+		contentPane.add(btnVoltar);
+		
 	}
 }
