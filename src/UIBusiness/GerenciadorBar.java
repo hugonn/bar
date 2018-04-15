@@ -60,5 +60,9 @@ public class GerenciadorBar {
 	 		return bd.pesquisaPessoa(cpf);
 	 			
 	 	}
+	 	
+	 	public boolean registrarSaida(String cpf) {
+	 		return bd.removePessoa(cpf);
+	 	}
 
 }

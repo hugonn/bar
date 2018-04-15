@@ -42,7 +42,7 @@ public class JanelaPrincipal extends JFrame {
 	public JanelaPrincipal() {
 		setTitle("Bar do Dibre");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 421, 194);
+		setBounds(100, 100, 421, 241);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,8 +84,19 @@ public class JanelaPrincipal extends JFrame {
 				}
 			}
 		});
-		btnGerente.setBounds(71, 92, 251, 23);
+		btnGerente.setBounds(71, 88, 251, 23);
 		contentPane.add(btnGerente);
+		
+		JButton btnNewButton = new JButton("Registrar Sa\u00EDda");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaSaida jS = new JanelaSaida(jg);
+				jS.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(71, 140, 251, 23);
+		contentPane.add(btnNewButton);
 	}
 	public void setPessoa(String nome, String cpf, int idade,String genero) {
 		gb.criaPessoa(nome,cpf,idade,genero.charAt(0),0);
@@ -119,6 +130,10 @@ public class JanelaPrincipal extends JFrame {
 	
 	public boolean pesquisaCliente(String cpf) {
 		return gb.pesquisaCliente(cpf);
+	}
+	
+	public boolean registrarSaida(String cpf) {
+		return gb.registrarSaida(cpf);
 	}
 	
 
