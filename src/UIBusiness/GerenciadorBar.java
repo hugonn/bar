@@ -64,5 +64,9 @@ public class GerenciadorBar {
 	 	public boolean registrarSaida(String cpf) {
 	 		return bd.removePessoa(cpf);
 	 	}
+	 	
+	 	public Bar getBar() {
+	 		return bd;
+	 	}
 
 }
