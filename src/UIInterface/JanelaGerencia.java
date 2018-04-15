@@ -18,23 +18,23 @@ public class JanelaGerencia extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JanelaGerencia frame = new JanelaGerencia();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					JanelaGerencia frame = new JanelaGerencia();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public JanelaGerencia() {
+	public JanelaGerencia(JanelaPrincipal jP) {
 		setTitle("Bar do Dibre");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -50,12 +50,12 @@ public class JanelaGerencia extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(janelaFilho == null) {
-					janelaFilho = new JanelaCliente(jg);
+				    janelaFilho = new JanelaCliente(jP);
 					dispose();
 					janelaFilho.setVisible(true);
 				}else{
 					dispose();
-					System.out.println("teste Criação tela");
+					System.out.println("teste Criando tela");
 					janelaFilho.setVisible(true);
 					
 				}
