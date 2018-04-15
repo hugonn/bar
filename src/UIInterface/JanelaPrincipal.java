@@ -117,5 +117,9 @@ public class JanelaPrincipal extends JFrame {
 		return gb.getClientesBar();
 	}
 	
+	public boolean pesquisaCliente(String cpf) {
+		return gb.pesquisaCliente(cpf);
+	}
+	
 
 }

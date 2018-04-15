@@ -54,5 +54,11 @@ public class GerenciadorBar {
 	 		
 	 		return pessoas;
 	 	}
+	 	
+	 	public boolean pesquisaCliente(String cpf) {
+	 		
+	 		return bd.pesquisaPessoa(cpf);
+	 			
+	 	}
 
 }

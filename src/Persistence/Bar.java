@@ -28,6 +28,15 @@ public class Bar {
 		return false;
 	}
 	
+	public boolean pesquisaPessoa(String cpf) {
+		for(Pessoa p: pessoasBar) {
+			if(p.getCpf().equals(cpf)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public int retornaPessoasBar() {
 		return pessoasBar.size();
 	}

@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class JanelaGerente extends JFrame {
 
 	private JPanel contentPane;
+	private JanelaPrincipal jP;
 
 	/**
 	 * Launch the application.
@@ -45,6 +46,7 @@ public class JanelaGerente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JanelaGerente jG = this;
+		this.jP = jP;
 		
 		JLabel lblQtdClientes = new JLabel("qtd Clientes:");
 		lblQtdClientes.setBounds(280, 31, 78, 14);
@@ -77,6 +79,14 @@ public class JanelaGerente extends JFrame {
 		contentPane.add(btnListCli);
 		
 		JButton btnNewButton = new JButton("Pesquisar Cliente");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaPesquisa ws = new JanelaPesquisa(jG);
+				dispose();
+				ws.setVisible(true);
+				
+			}
+		});
 		btnNewButton.setBounds(72, 95, 198, 23);
 		contentPane.add(btnNewButton);
 		
@@ -158,9 +168,8 @@ public class JanelaGerente extends JFrame {
 		contentPane.add(btnNewButton_3);
 		
 		
-		
-		
-		
-		
+	}
+	public boolean pesquisaCliente(String cpf) {
+		return jP.pesquisaCliente(cpf);
 	}
 }
